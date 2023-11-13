@@ -39,12 +39,21 @@
         and think about each piece in isolation. Conceptually, components are like JS functions. They accept arbitary
         inputs, called props, and return React elements describing what should appear on the screen.</p>
 
-    <p></p>
+    <p>They can be very small, just a single button, or quite large. But they are meant to be modular and reusable.</p>
 
+    <h2>Setting up a Server</h2>
 
+    <p>If we want our files to be served up from localhost, we have to do some stuff first. Colt has an extension called
+        live server in vscode. After installing, we can right click on a file to open it with the live server.</p>
 
+    <h2>First Component</h2>
 
+    <p>I downloaded some starter files from colt and put them in this folder. They must be started up with the live
+        server, the babel script will not like it if we open it via the file protocol.</p>
 
+    <p>This behaves now like standard HTML. Except React has a few quirks. When we return something from the Render
+        method, like a div or an h1, we can only have one top level element. That element can contain other elements,
+        but it must not have any top level siblings.</p>
 
 
 
