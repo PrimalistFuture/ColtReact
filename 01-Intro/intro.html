@@ -55,6 +55,20 @@
         method, like a div or an h1, we can only have one top level element. That element can contain other elements,
         but it must not have any top level siblings.</p>
 
+    <h2>Function vs Class Components</h2>
+
+    <p>Components can be made in two different ways, like a JS class or like a JS function.</p>
+
+    <p><b>Class components</b> are the traditional React components, where logic is in a JS class and it must include a
+        render method.</p>
+
+    <p><b>Functions components</b> are typically used to for simpler 'dumb' components that don't need much logic or
+        don't change much. They don't need the render method, just return the content (usually html).</p>
+
+    <p>Both ways of creating components can accept props and render content.</p>
+
+    <p>Historically, function components couldn't use important features like state or lifecycle methods. With the
+        introduction of Hooks, we can now write full-featured function components.</p>
 
 
 

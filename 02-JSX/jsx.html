@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX</title>
+</head>
+
+<body>
+    <h1>JSX</h1>
+
+    <h2>Basics</h2>
+
+    <p><b>JavaScript Syntax Extension</b> is a way of writing HTML looking code in JavaScript, which would normally be
+        totally invalid. This lets us write components and easily see what it directly results in. Behind the scenes
+        Babel is 'transpiling' the HTML into valid JS. But we don't have to worry about that. </p>
+
+    <p>It is possible to write React code without JSX, but it is a lot harder and a lot uglier.</p>
+
+    <p>JSX is more strict that HTML - elements must either have an explicit closing tag <i>b ... /b</i>, or be
+        explicitly self closing <i>input name='msg' /.</i> You cannot leave off the / or you will get a syntax error.
+    </p>
+
+    <p>And remember that you can only have a single top level element.</p>
+
+    <h2>Embedding JS in JSX</h2>
+
+    <p>In JSX, things we surround with curly braces can be normal, vanilla JS. When we have a bunch of different
+        components all talking to each other, this will let us create more dynamic code. Check the demo, we will be
+        doing it all of the time.</p>
+
+    <h2>Conditionals in JSX</h2>
+
+    <p>Displaying things selectively in JSX is a little stranger than you might expect. There are a bunch of ways of
+        doing it, but there are something you will have to avoid as well. </p>
+
+    <p>The simplest and most common way to have conditional logic in JSX is to use the ternary operator.</p>
+
+    <h2>Standard React App Layout</h2>
+
+    <p>Nothing we have done some far is the standard React App Layout. Typically you have a top level App component. And
+        you typically only have one component per file. The App component will combine all of the other components we
+        want and it will have the final say. Usually this is the only thing rendered in the DOM.</p>
+
+    <p>Make sure the smaller components are included as scripts before the component that might render them.</p>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
