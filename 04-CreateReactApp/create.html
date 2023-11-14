@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create React App</title>
+</head>
+
+<body>
+    <h1>Create React App</h1>
+
+    <p>We have seen that React is a front-end library, and you don't need to get any fancy server-side stuff. We have
+        thus far gotten our React from a CDN that we have imported with script tags and have then transpiled into real
+        JavaScript with JSX in the browser at runtime.</p>
+
+    <p><b>Create-React-App</b> is a utility script that creates a skeleton react project, and sets it up so that JS
+        files are run through Babel automatically. Lets us use super-modern JS features and idioms, and makes testing
+        and deployment much easier.</p>
+
+    <p>It is a great way to get React up and running.</p>
+
+    <h2>Webpack</h2>
+
+    <p>CRA is built on top of Webpack which is a JS utility that enables module importing and exporting, packages up all
+        of our css/images/js into a single file for the browser, has 'hot-reloading' so we don't have to restart server
+        to see changes, enables easy testing and deployment. </p>
+
+    <p>Generally, webpack is a pain to get up and running, but CRA does all of that setup for us.</p>
+
+    <h2>Installing Create-React-App</h2>
+
+    <p>There are a few options. I will use this one. It usually takes a bit. </p>
+
+    <p><b>npx create-react-app app-name-here</b></p>
+
+    <h2>Creating a New App</h2>
+
+    <p>Create React App which will make a bunch of stuff for you. In the public folder, it will start you off with and
+        index.html. Most of your time will be spent in the src folder.</p>
+
+    <h2>Starting and Stoping the Server</h2>
+
+    <p><b>npm start</b> in the command line from inside of the application.</p>
+    <p>Then use control-c to stop your server.</p>
+
+    <h2>Modules Crash Course</h2>
+
+    <p>This isn't specific to React or create-react-app, but now that we are in CRA, we will be importing and exporting
+        files so I think a refresher will be good.</p>
+
+    <p>CRA uses ES2015 "modules", which is newer standardized version of Node's require(). You use this to export /
+        import classes / data / functions between JS files.</p>
+
+    <p>Modules are files that contain code you want to use somethere else. Modules are imported at the top of the file
+        you want to use them in, </p>
+
+    <p>Check the demo and helpers for useful comments.</p>
+
+    <h3>When to use export default</h3>
+
+    <p>The general case for exporting something as default is when it is the main thing of that file, and will almost
+        certainly always be needed for import. </p>
+
+
+
+
+
+
+
+</body>
+
+</html>

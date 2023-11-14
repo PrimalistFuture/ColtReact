@@ -41,3 +41,42 @@ class Messages extends React.Component {
         )
     }
 }
+
+// Default Props
+class Greet extends React.Component {
+    static defaultProps = {
+        to: "Elie",
+        from: "Joel",
+    }
+    render() {
+        return (
+            <div>
+                <p>Hi {this.props.to} from {this.props.from}!</p>
+            </div>
+        )
+    }
+}
+
+// Styling React Intro
+class Machine extends React.Component {
+    render() {
+        let allTrue;
+        if (this.props.s1 === this.props.s2 && this.props.s2 === this.props.s3) {
+            allTrue = true;
+        } else {
+            allTrue = false;
+        }
+        // Style variable that can be passed in
+        const colors = { fontSize: '50px', backgroundColor: 'purple' }
+        return (
+            <div>
+                <p style={colors}>{this.props.s1} {this.props.s2} {this.props.s3}</p>
+                {/* gives a different className depending on winner, and you can imagine that the different classNames might be styled differently in a dedicated .css file. */}
+                <p className={winner ? 'win' : 'lose'}>
+                    {allTrue ? 'You win' : 'You lose'}
+                </p>
+            </div>
+        )
+    }
+}
+
