@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Pokegame.css";
-import { choice, remove } from "./helpers";
 import Pokedex from "./Pokedex";
 
 class Pokegame extends Component {
@@ -18,20 +17,20 @@ class Pokegame extends Component {
     };
     render() {
         let pokedex1 = [];
-        let pokedex2 = [];
-        for (let i = 0; i < 4; i++) {
-            let poke = choice(this.props.pokemon);
-            remove(this.props.pokemon, poke);
-            pokedex1.push(poke);
+        let pokedex2 = [...this.props.pokemon];
+        while (pokedex1.length < pokedex2.length) {
+            let randIndex = Math.floor(Math.random() * pokedex2.length)
+            let randPokemon = pokedex2.splice(randIndex, 1)[0]
+            pokedex1.push(randPokemon)
         }
-        this.props.pokemon.map(poke => pokedex2.push(poke));
+        let exp1 = pokedex1.reduce((exp, pokemon) => exp + pokemon.base_experience, 0);
+        let exp2 = pokedex2.reduce((exp, pokemon) => exp + pokemon.base_experience, 0);
         return (
             <div>
-                {/* NOW i NEED A WAY TO CALCULATING THE EXP FROM EACH POKEDEX AND DETERMINING WHICH IS HIGHER. THEN I WILL DYNAMICALLY CHANGE THE CLASSNAME OF THESE H2 */}
                 <h2 className="Pokegame-winner?">Hand One:</h2>
-                <Pokedex pokemon={pokedex1} />
+                <Pokedex pokemon={pokedex1} totalExp={exp1} isWinner={exp1 > exp2} />
                 <h2 className="Pokegame-winner?">Hand Two</h2>
-                <Pokedex pokemon={pokedex2} />
+                <Pokedex pokemon={pokedex2} totalExp={exp2} isWinner={exp2 > exp1} />
             </div>
         )
     }
