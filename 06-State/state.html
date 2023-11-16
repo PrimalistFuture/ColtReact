@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React State Intro</title>
+</head>
+
+<body>
+    <h1>State Intro</h1>
+
+    <p>Critical to making apps where you want things to change. <b>State</b> exists in every User Interface, where some
+        information has to be tracked as it might be changing. Examples: logged-in users see a different screen than
+        logged-out users; Clicking "edit profile" opens up a modal (pop-up) window; sections of a website can expand or
+        collapse like a "read more" section.</p>
+
+    <p>State is different from props in that it can change (whereas props are immutable) and that state is usually
+        specific to the component, rather than passed down like a prop normally is.</p>
+
+    <p>The state of the client interface (front-end) may or may not be directly tied to the state of the server
+        (back-end). </p>
+
+    <p>State tracks UI logic and business logic. With vanilla JS, we would use the DOM as the source of truth for the
+        state: we would select some element from the DOM and check to see its value or position or whatever. With React,
+        it is the opposite.</p>
+
+    <h2>Initializing State</h2>
+
+    <p>In React, State is an instance attribute on a component. It is a object since you will want to keep track of
+        several key/values. It must be called State, the name is magic.</p>
+
+    <p>State should be initialized as soon as the component is created in a constructor function. If your component is
+        stateless, you can omit the constructor as we have done up to this point. </p>
+
+    <p>CTD: The constructor takes one argument: props, and you must call super(props) at the start of the constructor,
+        which "registers" your class as a React Component. If your component is stateless, we don't need to call
+        super(props) but otherwise it should always been done, and it is safe do do it even if the component is dumb.
+    </p>
+
+    <h2></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
