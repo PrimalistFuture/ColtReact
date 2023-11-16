@@ -1,13 +1,13 @@
 // import logo from './logo.svg';
 import './App.css';
-import Pokedex from "./Pokedex"
+import Pokegame from "./Pokegame";
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" />
+      {/* <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -18,9 +18,10 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a> */}
-        <Pokedex />
-      </header>
+        </a>
+      </header> */}
+      <Pokegame />
+      {/* <Pokedex /> */}
     </div>
   );
 }
