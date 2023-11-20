@@ -38,11 +38,47 @@
         super(props) but otherwise it should always been done, and it is safe do do it even if the component is dumb.
     </p>
 
-    <h2></h2>
+    <h2>Setting State Correctly</h2>
 
+    <p>Unlike props, state can be reassigned, but it should NEVER be directly manipulated like you would any other
+        object (<i>this.state.score = 0</i>). Instead, React really wants you to use <b>this.setState(), which is a
+            built-in React method of changing a component's state.</b>
+    </p>
 
+    <p>this.setState() should not be called in the constructor (why you would want to after you just initialized it I
+        have no idea) or in the render().
+    </p>
 
+    <p>this.setState() takes an object describing the state changes, and it <b>patches</b> state object - keys that you
+        didn't specify don't change. This is done so that the state keys you don't want to change don't go away. This
+        all happens asynchronously - the component's state will eventually update. React controls when the state will
+        change, for performance reasons. This is important because when a components state changes, it triggers a that
+        component to re-render.
+    </p>
 
+    <p>Check the demo to see how to change state, but we will see a better way later to actually do the rest of it.</p>
+
+    <h2>React Events</h2>
+
+    <p>Most of the time when you want the state to change is because of some sort of user event.</p>
+    <p>In React, every JSX element has built in attributes representing every kind of browser event. They are all
+        camelCased, like onClick, and take callback functions as event listeners. These functions should be passed in,
+        but not executed with (). The event listener will handle the execution.</p>
+
+    <p>Make sure to bind the handleClick function (conventionally called this) in the constructor!!!! CTD. There are
+        other ways to bind functions, but this is fine.</p>
+
+    <h2>State Exercise</h2>
+
+    <p>Pretty standard from the demo's examples. But has some examples of conditional logical short curcuiting. We also
+        could have added another piece of state isWinner that we would set if the number is 7.</p>
+
+    <h2>State as Props</h2>
+
+    <p>A very common React pattern is a stateful ('smart') parent component passing down its state values as props to
+        stateless ('dumb') child components. This idea is generalized in React as "downward data flow". It means that
+        components get simpler as you go down the component heirarchy and parents tend to be more stateful than their
+        children.</p>
 
 
 
