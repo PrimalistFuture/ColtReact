@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React State Patterns</title>
+</head>
+
+<body>
+    <h1>React State Patterns</h1>
+
+    <ul>Goals
+        <li>Learn how to update state based off of existing state</li>
+        <li>Properly manage state updates for mutable data structures</li>
+        <li>Discuss best practices for modeling state and designing components</li>
+    </ul>
+
+    <h2>Updating Existing State</h2>
+
+    <p>Thus far we have changed state, like from true to false or from 1 to 6, but we haven't updated the state based
+        off of existing state.
+    </p>
+
+    <p>Remember that setState is asynchronous, so it is risky to assume that the previous call of setState has entirely
+        finished when you call it. Also React will sometimes batch (squash together) calls to setState for performance
+        reasons.</p>
+
+    <p><b>If a call to setState depends on the current state, the safest thing is to use the alternate "callback
+            form".</b> setState can accept a callback function rather that an object. This callback should have the
+        current state as a parameter, and it should return an object representing the new state.</p>
+
+    <p>The fact that you can pass a function to this.setState lends itself nicely to a more advanced pattern called
+        functional setState. You can describe your state updates abstractly as seperate functions. This makes the code
+        more readable, easier to test and is a common pattern with Redux.
+    </p>
+
+    <h2>Mutating State the safe way</h2>
+
+    <p>So far everything we have stored in state has been a primative value - strings, numbers, booleans. But component
+        state also commonly includes objects, arrays and nested data structures. But mutating nested data structures in
+        your state can cause problems with React. </p>
+
+    <p>A much better way is to make a new copy of the data structure in question. We can use any <b>pure</b> function to
+        do this. We then update the copy and set the state with that copy. This means that .map, .filter, .reduce are
+        your friends. So is the ...spread operator.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
