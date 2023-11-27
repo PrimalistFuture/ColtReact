@@ -80,3 +80,87 @@ function addIcon() {
     let newIcon = this.props.options[idx];
     this.setState({ icons: [...this.state.icons, newIcon] });
 }
+
+// Designing State
+
+// Minimizing State
+
+this.state = {
+    firstName: 'Matt',  // doesn't change, should not be state
+    lastName: 'Lane',   // doesn't change, should not be state
+    birthday: '1955-01-08', // doesn't change, should not be state
+    age: 64,    // does change, but can be derived from birthday, so should    not be its own state
+    mood: 'irate', // does change, should be state
+}
+
+// Downward Data Flow
+
+// This way, the TodoList component contains all of the state, which are then passed down to the Todo components as props
+class TodoList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            todos: [
+                { task: 'check email', done: false, id: 1 },
+                { task: 'make haircut appointment', done: false, id: 2 }
+            ]
+        }
+    }
+    // whatever else...
+    render() {
+        return (
+            <ul>
+                {this.state.todos.map(todo => <Todo {...todo} />)}
+            </ul>
+        )
+    }
+}
+
+
+// Quick example combining previous topics
+class Lottery extends Component {
+    static defaultProps = {
+        title: 'Lotto',
+        numBalls: 6,
+        maxNum: 40
+    }
+    constructor(props) {
+        super(props);
+        this.state = {
+            numbers: Array.from({ length: this.props.numBalls })
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+    generate() {
+        // there are other ways to setState, but this is the safest way. "The Callback Method" We don't want to mutate the numbers state directly, we want to build an entirely new array and set that equal to the numbers state. 
+        this.setState(curState => ({
+            numbers: curState.numbers.map(
+                n => Math.floor(Math.random() * this.props.maxNum) + 1
+            )
+        }))
+    }
+    handleClick(e) {
+        this.generate();
+    }
+    render() {
+        return (
+            <div>
+                <h1>{this.props.title}</h1>
+                <div className="Lottery">
+                    {this.state.numbers.map(n => <LottoBall number={n} />)}
+                </div>
+                <button onClick={this.handleClick}>Generate</button>
+            </div>
+        )
+    }
+}
+
+class LottoBall extends Component {
+    render() {
+        return (
+            <div className='LottoBall'>
+                {this.props.number}
+            </div>
+        )
+    }
+}

@@ -45,8 +45,21 @@
         do this. We then update the copy and set the state with that copy. This means that .map, .filter, .reduce are
         your friends. So is the ...spread operator.</p>
 
+    <h2>Designing State</h2>
 
+    <h3>Minimizing State</h3>
 
+    <p>In React, you want to try and put as little data in state as possible. The question you should be asking is 'does
+        x change?' If not, x should not be part of state, it should be a prop or something else. If something could be
+        derived from another piece of state or prop, it should not be its own piece of state.</p>
+
+    <h3>Downward Data Flow</h3>
+
+    <p>As previously mentioned, we want to suppor the "downward data flow" philosophy of React: State should generally
+        live on the parent component. These stateful parent components then pass that state on as props to stateless
+        child display components.</p>
+
+    <p>This also makes debugging easier, as state lives in as few places as possible.</p>
 
 
 
