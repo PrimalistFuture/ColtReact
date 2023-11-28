@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Events</title>
+</head>
+
+<body>
+    <h1>React Events</h1>
+
+    <h2>Commonly Used React Events</h2>
+
+    <p>You can attach event handlers to HTML elements in React via special reserved attributes like onClick. You can do
+        this in vanilla JavaScript too but the syntax is a bit different.</p>
+
+    <p>Some common ones: <b>onClick, onMouseOver, onSubmit, onKeyDown, onKeyUp, onKeyPress</b>. There are a ton.</p>
+
+    <h2>Method Binding</h2>
+
+    <p>We must bind a method because the keyword <b>this</b> loses context within our event handlers - they aren't sure
+        what this is. We already saw one way of binding a method in the constructor - which should be considered the
+        default. But there are more.</p>
+
+    <p><b>Inline</b> can be done within the event attribute. It is very explicit, but if that event handler function is
+        part of multiple components, it must be bound every time. This means that a 'new' function is created on every
+        render. Mostly these are small points, but they could matter.</p>
+
+    <p>It can also be done inline with an arrow function - syntax is a little different</p>
+
+    <p>There is another 'experimental' way of binding that works fine in React because of Babel, but it is not in real
+        JavaScript yet. Colt has a video on it.</p>
+
+    <h2>Method Binding with Arguments</h2>
+
+    <p>So far the examples we have seen did not have any arguments passed into the event handler.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
