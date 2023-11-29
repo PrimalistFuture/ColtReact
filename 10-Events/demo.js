@@ -79,3 +79,90 @@ class ButtonList extends Component {
         )
     }
 }
+
+// Passing down functions to child components
+
+class NumberList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            nums: [1, 2, 3, 4, 5]
+        };
+    }
+
+    remove(num) {
+        this.setState(st => ({
+            nums: st.nums.filter(n => n !== num)
+        }));
+    }
+
+    render() {
+        // The issue with this way is we are making and binding the remove function however many times there are numbers. Not a huge deal, but probably better not to.
+        let nums = this.state.nums.map(n => <NumberItem value={n} remove={() => this.remove(n)} />);
+        return (
+            <div>
+                <h1>First Number List</h1>
+                <ul>{nums}</ul>
+            </div>
+        )
+    }
+}
+
+class NumberItem extends Component {
+    render() {
+        return (
+            <li>
+                {this.props.value}
+                <button onClick={this.props.remove}>X</button>
+            </li>
+        );
+    }
+}
+
+class BetterNumberList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            nums: [1, 2, 3, 4, 5]
+        };
+        // now remove is bound in the constructor
+        this.remove = this.remove.bind(this);
+    }
+
+    remove(num) {
+        this.setState(st => ({
+            nums: st.nums.filter(n => n !== num)
+        }));
+    }
+
+    render() {
+        let nums = this.state.nums.map(n =>
+            <BetterNumberItem value={n} remove={this.remove} />
+        );
+        return (
+            <div>
+                <h1>First Number List</h1>
+                <ul>{nums}</ul>
+            </div>
+        )
+    }
+}
+
+class BetterNumberItem extends Component {
+    constructor(props) {
+        super(props);
+        this.handleRemove = this.handleRemove.bind(this);
+    }
+    // we can't just give it this.props.remove, we need a way to handle the event. Doing it this way also loses 'this' context, so we need a constructor to bind this.
+    handleRemove(e) {
+        this.props.remove(this.props.value);
+    }
+    render() {
+        return (
+            <li>
+                {this.props.value}
+                <button onClick={this.handleRemove}>X</button>
+            </li>
+        );
+    }
+}

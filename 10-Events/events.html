@@ -36,11 +36,38 @@
 
     <p>So far the examples we have seen did not have any arguments passed into the event handler.</p>
 
+    <h2>Passing functions to child components</h2>
 
+    <p>A very common pattern in react is passing down functions to child components. The idea is that child components
+        are often not stateful, but still need to tell the parernts to change the state.</p>
 
+    <p>So the parent component defines a function, the function is passed as a prop to the child component, the child
+        component invokes the prop, the parent function is called, usually setting a new state, and finally the parent
+        component is re-rendered along with its children.</p>
 
+    <p>CTD. This is complicated.</p>
 
+    <p>In general, it is always better to bind as high up as you can. Don't bind in the child component if you can get
+        away with it. If you need a parameter, pass it down to the child as a prop, then bind in parent and child. Avoid
+        inline arrow function / binding if possible.</p>
 
+    <p>Don't worry about performance first, get it all working then can refactor if needed.</p>
+
+    <h2>Parent / Child naming conventions</h2>
+
+    <p>You can of course call these handlers whatever you want, React doesn't care. But for consistency, try to follow
+        the 'action' / 'handleAction' pattern.</p>
+
+    <h2>React Keys</h2>
+
+    <p>Anytime you map over some data and return a list, you will get a warning that the items in the list should have a
+        'key' prop. The key is a special string attribute to include when creating lists of elements. These keys need to
+        be unique so that React can be track of what has changed / removed. Usually this can come from your own data
+        set, or database. </p>
+
+    <p>The last resort is to use the index of the item in the array. Only works if your data is not going to change.</p>
+
+    <p>Can also install uuid or shortid or some other tool that will generate a unique id for you.</p>
 
 
 
