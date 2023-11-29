@@ -57,6 +57,15 @@
   box-shadow: 0 6px #9e9e9e;
 }
 
-.Hangman Restart-btn {
-  width: 200px;
+#Restart {
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffc107;
+  box-shadow: 0 6px #ff9800;
+}
+
+#Restart:hover {
+  background: #ff9800;
 }
