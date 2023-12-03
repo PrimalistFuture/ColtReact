@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Forms</title>
+</head>
+
+<body>
+    <h1>React Forms</h1>
+
+    <p>Forms work a little different than they do in vanilla HTML. Forms in React naturally keep some internal state, so
+        that you can access information from the inputs.</p>
+
+    <p>So it is convenient to have a JS function that handles the submission of the form and has access to the data the
+        user entered. The technique to get this is called a <b>controlled component</b>. React really wants to override
+        the vanilla HTML such that React has control over the form and syncs the state up. React controls what is shown
+        in the component and what happens when the user types (which gets kept in state).
+    </p>
+
+    <p>This way there is no gap of knowledge between React state and the form input - React state is the source of
+        truth. With a controlled component, every state mutation will have an associated handler function. This makes it
+        easy to modify or validate user input.</p>
+
+    <h2>Multiple Input Forms</h2>
+
+    <p>Of course we could make a new handleChange function for each input of the form, but that is a lot of new code
+        that only changes the state. The issue with this is how do we write a handleChange function that knows which
+        piece of state to update? CTD.</p>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
