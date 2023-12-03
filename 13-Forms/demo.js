@@ -99,3 +99,94 @@ class MultiForm extends Component {
         );
     }
 }
+
+
+// Upwards Data Flow
+// See how the stateful form sends data back up to the ShoppingList state
+class ShoppingListForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            qty: ''
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+    /** Updates the state in parent ShoppingList to contain new item */
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.addItem(this.state);
+        this.setState({
+            name: '',
+            qty: ''
+        })
+    }
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor='name'>Name:</label>
+                <input
+                    id="name"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.handleChange}>
+                </input>
+                <label htmlFor='qty'>Quanitity</label>
+                <input
+                    id="qty"
+                    name="qty"
+                    value={this.state.qty}
+                    onChange={this.handleChange}>
+                </input>
+                <button>Add Item!</button>
+            </form>
+        )
+    }
+}
+
+class ShoppingList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: [
+                { name: "Milk", qty: "2 gallons" },
+                { name: "Bread", qty: "2 loaves" }
+            ]
+        };
+        this.addItem = this.addItem.bind(this);
+    }
+    /** Not used by the ShoppingList, but by the Form */
+    addItem(item) {
+        this.setState(state => ({
+            items: [...state.items, item]
+        }))
+    }
+    renderItems() {
+        return (
+            <ul>
+                {this.state.items.map(item => (
+                    <li>
+                        {item.name}:{item.qty}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Shopping List</h1>
+                {this.renderItems()}
+                <ShoppingListForm addItem={this.addItem} />
+            </div>
+        )
+    }
+}
+
