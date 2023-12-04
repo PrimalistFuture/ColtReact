@@ -21,6 +21,12 @@ class BoxList extends Component {
         }))
     }
 
+    removeBox(id) {
+        this.setState({
+            boxes: this.state.boxes.filter(box => box.id !== id)
+        })
+    }
+
     render() {
         return (
             <div>
