@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from "uuid/v4";
 
 // Controlled Component Form
 // The handleChange is what makes React state in lock step with the form and thus a 'controlled component'
@@ -149,29 +150,30 @@ class ShoppingListForm extends Component {
         )
     }
 }
-
+// uses uuid in state and in the return lis. Imported at the top.
 class ShoppingList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             items: [
-                { name: "Milk", qty: "2 gallons" },
-                { name: "Bread", qty: "2 loaves" }
+                { name: "Milk", qty: "2 gallons", id: uuid() },
+                { name: "Bread", qty: "2 loaves", id: uuid() }
             ]
         };
         this.addItem = this.addItem.bind(this);
     }
-    /** Not used by the ShoppingList, but by the Form */
+    /** Not used by the ShoppingList, but by the Form. Creates a new uuid to add to the forms data before updating state. */
     addItem(item) {
+        let newItem = { ...item, id: uuid() }
         this.setState(state => ({
-            items: [...state.items, item]
+            items: [...state.items, newItem]
         }))
     }
     renderItems() {
         return (
             <ul>
                 {this.state.items.map(item => (
-                    <li>
+                    <li key={item.id}>
                         {item.name}:{item.qty}
                     </li>
                 ))}
