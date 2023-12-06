@@ -78,7 +78,7 @@ class Game extends Component {
               locked={this.state.locked}
               handleClick={this.toggleLocked}
             />
-            <div className='Game-button-wrapper'>
+            {this.state.rollsLeft > 0 && <div className='Game-button-wrapper'>
               <button
                 className='Game-reroll'
                 disabled={this.state.locked.every(x => x)}
@@ -87,6 +87,7 @@ class Game extends Component {
                 {this.state.rollsLeft} Rerolls Left
               </button>
             </div>
+            }
           </section>
         </header>
         <ScoreTable doScore={this.doScore} scores={this.state.scores} />
