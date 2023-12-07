@@ -60,17 +60,8 @@ class SumDistro extends Rule {
 class FullHouse extends Rule {
   // TODO
   evalRoll = dice => {
-    let diceSet = new Set(dice);
-    if (diceSet.size === 2) {
-      for (let die of diceSet) {
-        if (die !== 2 || die !== 3) {
-          return 0;
-        } else {
-          return this.score;
-        }
-      }
-    }
-    return 0;
+    const freqs = this.freq(dice);
+    return (freqs.includes(2) && freqs.includes(3) ? this.score : 0)
   }
 }
 
@@ -127,7 +118,7 @@ const largeStraight = new LargeStraight({ score: 40 });
 // yahtzee scores as 50
 const yahtzee = new Yahtzee({ score: 50 });
 
-// for chance, can view as some of all dice, requiring at least 0 of a kind
+// for chance, can view as sum of all dice, requiring at least 0 of a kind
 const chance = new SumDistro({ count: 0 });
 
 export {

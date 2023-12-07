@@ -5,15 +5,15 @@ class RuleRow extends Component {
   render() {
     let scored;
     if (this.props.score >= 0) {
-      scored = "RuleRow RuleRow-disabled";
+      scored = "disabled";
     } else {
-      scored = "RuleRow RuleRow-active";
+      scored = "active";
     }
 
     return (
-      <tr className={scored} onClick={this.props.doScore}>
+      <tr className={`RuleRow RuleRow-${scored}`} onClick={this.props.score >= 0 ? null : this.props.doScore}>
         <td className="RuleRow-name">{this.props.name}</td>
-        <td className="RuleRow-score">{this.props.score}</td>
+        <td className="RuleRow-score">{this.props.score >= 0 ? this.props.score : this.props.desc}</td>
       </tr>
     )
   }
