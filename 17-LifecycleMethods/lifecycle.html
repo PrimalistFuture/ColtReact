@@ -27,10 +27,33 @@
 
     <h2>Loading Data via AJAX</h2>
 
-    <p>Colt uses axios, <i>npm install axios</i></p>
+    <p>Colt uses axios, <i>npm install axios</i>. As mentioned above, componentDidMount is where you should load data
+        from AJAX, because that is what the React Docs recommend. There are some real reasons for this, but generally
+        your component won't break if you don't but, but you should. They don't want you to load the async data in the
+        constructor.
+    </p>
 
+    <p>Because we are loading our data after the component is loaded initially, we could concievably have a gap between
+        that will not be a great experience for the user. Most React apps then will render a loading spinner so the user
+        can see that the page is still loading.</p>
 
+    <h2>Loading Data with Async Functions</h2>
 
+    <p>CTD.</p>
+
+    <h2>Introducing ComponentDidUpdate</h2>
+
+    <p>Called everytime a component is updated, though not on mount. <b>This is the place to implement any side effect
+            operations like</b> syncing up with localStorage, auto-saving, updating the DOM for uncontrolled components.
+    </p>
+
+    <p>Pass in the previous state and previous props into the componentDidUpdate. </p>
+
+    <h2>Introducing ComponentWillUnmount</h2>
+
+    <p>Called right before a compoenent is removed from a page. It should not set state, because there will be no
+        re-rendering after this. This would be a good place to call clearInterval if you had a setTimeout running.
+        Pretty straightforward.</p>
 </body>
 
 </html>
