@@ -14,44 +14,50 @@ class JokeList extends Component {
         }
         this.increaseRating = this.increaseRating.bind(this);
         this.decreaseRating = this.decreaseRating.bind(this);
+        this.retrieveJokesFromApi = this.retrieveJokesFromApi.bind(this);
     }
 
     async componentDidMount() {
-        let jokes = [];
         if (localStorage.getItem('joke-9') === null) {
-            for (let i = 0; i < MAX_JOKES; i++) {
-                while (jokes.length < MAX_JOKES) {
-                    try {
-                        let response = await axios.get(
-                            API_URL,
-                            { headers: { Accept: "application/json" } }
-                        );
-                        if (!jokes.includes(response.data.id)) {
-                            jokes.push(
-                                {
-                                    number: i,
-                                    id: response.data.id,
-                                    joke: response.data.joke,
-                                    rating: 0,
-                                }
-                            )
-                        };
-                    } catch (error) {
-                        alert(error);
-                    }
-                }
-                this.setState({
-                    jokes: jokes,
-                    isLoaded: true
-                });
-                this.addToLocalStorage();
-            }
+            this.retrieveJokesFromApi();
         } else {
             this.retrieveFromLocalStorage();
             this.setState({
                 isLoaded: true,
             })
         }
+    }
+
+    async retrieveJokesFromApi() {
+        localStorage.clear();
+        let jokes = [];
+        for (let i = 0; i < MAX_JOKES; i++) {
+            while (jokes.length < MAX_JOKES) {
+                try {
+                    let response = await axios.get(
+                        API_URL,
+                        { headers: { Accept: "application/json" } }
+                    );
+                    if (!jokes.includes(response.data.id)) {
+                        jokes.push(
+                            {
+                                number: i,
+                                id: response.data.id,
+                                joke: response.data.joke,
+                                rating: 0,
+                            }
+                        )
+                    };
+                } catch (error) {
+                    alert(error);
+                }
+            }
+        }
+        this.setState({
+            jokes: jokes,
+            isLoaded: true
+        });
+        this.addToLocalStorage();
     }
 
     addToLocalStorage() {
@@ -85,7 +91,6 @@ class JokeList extends Component {
     increaseRating(id) {
         // Increases rating in state then in localstorage
         let joke = this.state.jokes.filter(joke => joke.id === id);
-        console.log(joke);
         let jokeRating = joke[0].rating;
         jokeRating++;
         let updatedJokes = this.state.jokes.map(joke => {
@@ -99,9 +104,9 @@ class JokeList extends Component {
         this.setState({
             jokes: updatedJokes
         });
-        let localJokeRating = parseInt(localStorage.getItem(`joke-${joke.number}-rating`));
+        let localJokeRating = localStorage.getItem(`joke-${joke[0].number}-rating`);
         localJokeRating++;
-        localStorage.setItem(`joke-${joke.number}-rating`, localJokeRating);
+        localStorage.setItem(`joke-${joke[0].number}-rating`, localJokeRating);
     }
 
     decreaseRating(id) {
@@ -120,10 +125,12 @@ class JokeList extends Component {
         this.setState({
             jokes: updatedJokes
         });
-        let localJokeRating = parseInt(localStorage.getItem(`joke-${joke.number}-rating`));
+        let localJokeRating = parseInt(localStorage.getItem(`joke-${joke[0].number}-rating`));
         localJokeRating--;
-        localStorage.setItem(`joke-${joke.number}-rating`, localJokeRating);
+        localStorage.setItem(`joke-${joke[0].number}-rating`, localJokeRating);
     }
+
+
 
     render() {
         const jokes = this.state.jokes.map(joke => {
@@ -133,7 +140,9 @@ class JokeList extends Component {
         });
         return (
             <div>
+                {this.state.isLoaded ? <h1>Dad Jokes!</h1> : <h1>The Dad jokes are coming!</h1>}
                 {jokes}
+                <button onClick={this.retrieveJokesFromApi}>Get new Dad Jokes!</button>
             </div>
         )
     }
