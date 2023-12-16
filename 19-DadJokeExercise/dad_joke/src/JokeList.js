@@ -105,7 +105,7 @@ class JokeList extends Component {
     }
 
     decreaseRating(id) {
-        // Increases rating in state then in localstorage
+        // decreases rating in state then in localstorage
         let joke = this.state.jokes.filter(joke => joke.id === id);
         let jokeRating = joke[0].rating;
         jokeRating--;
