@@ -13,11 +13,18 @@ class ColtJokeList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            jokes: []
+            jokes: JSON.parse(window.localStorage.getItem('jokes') || "[]")
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount() {
+        if (this.state.jokes.length === 0) {
+            this.getJokes();
         }
     }
 
-    async componentDidMount() {
+    async getJokes() {
         let jokes = [];
         while (jokes.length < this.props.numJokesToGet) {
             let res = await axios.get(API_URL, {
@@ -31,9 +38,12 @@ class ColtJokeList extends Component {
                 }
             );
         }
-        this.setState({
-            jokes: jokes
-        });
+        this.setState(st => ({
+            jokes: [...st.jokes, ...jokes]
+        }),
+            () => window.localStorage.setItem("jokes", JSON.stringify(this.state.jokes)));
+
+        window.localStorage.setItem("jokes", JSON.stringify(jokes));
     }
 
     handleVote(id, delta) {
@@ -42,7 +52,13 @@ class ColtJokeList extends Component {
                 jokes: st.jokes.map(j =>
                     j.id === id ? { ...j, votes: j.votes + delta } : j
                 )
-            }));
+            }),
+            () => window.localStorage.setItem("jokes", JSON.stringify(this.state.jokes))
+        );
+    }
+
+    handleClick() {
+        this.getJokes();
     }
 
     render() {
@@ -53,7 +69,7 @@ class ColtJokeList extends Component {
                         <span>Dad</span> Jokes
                     </h1>
                     <img src="https://assets.dryicons.com/uploads/icon/svg/8927/0eb14c71-38f2-433a-bfc8-23d9c99b3647.svg" alt="crying laughing face" />
-                    <button className="ColtJokeList-getmore">Get More Jokes</button>
+                    <button className="ColtJokeList-getmore" onClick={this.handleClick}>Get More Jokes</button>
                 </div>
 
                 <div className="ColtJokeList-jokes">
