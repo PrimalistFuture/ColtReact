@@ -48,8 +48,31 @@
     <p>To install, <b>npm install react-router-dom</b>. It must be imported at the top, <b>import {BrowserRouter} from
             "react-router-dom";</b>. There are other types of routers you can look into, but this one is fine.</p>
 
+    <p>By default, Route matching in React Router is inclusive - it wants to match as many routes as possible. For that
+        reason, put your more general routes (like your root route 'localhost:3000/') at the bottom. </p>
 
+    <p>The Switch import from react-router-dom will make sure that you only get one match, but it still needs you to put
+        the more general ones at the bottom, because every route will match with your root ('/')</p>
 
+    <p>Another solution to the order mattering issue the <b>exact prop</b> that can be passed into a path. Now
+        ReactRouter will only route to an exact match and order won't matter anymore. As a general rule, all of your
+        routes should have the exact prop unless you have a reason not to.</p>
+
+    <h2>Intro to Link Component</h2>
+
+    <p>The Link component acts as a replacement for the anchor tag (a). Instead of an href, we use a prop called 'to'.
+        And instead of making a GET request to another page, JS intercepts the click and does client-side routing.</p>
+
+    <h2>NavLinks</h2>
+
+    <p>NavLink component works just like the link component, but if we are at a page the link would go to, the component
+        gets a CSS class of active. This lets you stylize links to page you are already at using the <b>activeStyle or
+            activeClassName props.</b> </p>
+
+    <h2>Render props vs Component props</h2>
+
+    <p>Check out the demo for a quick discussion of some of the differences between render and component as a prop in
+        our Routes. If we are passing props, it is better to user render, otherwise component.</p>
 </body>
 
 </html>

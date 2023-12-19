@@ -56,7 +56,7 @@ ReactDOM.render(
 
 // in App Component
 
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link, NavLink } from "react-router-dom";
 
 const Info = () => <h1>Info about Component1</h1>
 
@@ -64,6 +64,11 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                <nav className="App-nav">
+                    <NavLink exact activeClassName="active-link" to="/component1">Component1</NavLink>
+                    <NavLink exact activeClassName="active-link" to="/component2">Component2</NavLink>
+                    <NavLink exact activeClassName="active-link" to="/component3">Component3</NavLink>
+                </nav>
                 {/* the path prop is the url path you are replicating, the component prop is what component is being rendered */}
                 {/* the more detailed routes go first to avoid duplicate matches */}
                 {/* the exact prop will only count a match if it is an exact match. Now the order won't matter anymore */}
@@ -71,8 +76,10 @@ class App extends Component {
                 <Switch>
                     {/* The Switch ensures that multiple paths don't match and only one component is rendered at a time. In our case it is redundant with exact */}
                     <Route exact path="/component1/info" component={Info} />
-                    <Route exact path="/component1" component={Component1} />
-                    <Route exact path="/component2" component={Component2} />
+                    {/* If we wanted to pass data into one of our components, this is one way. This way makes a new component which could slow you down. */}
+                    <Route exact path="/component1" component={() => <Component1 name="Vaughn" />} />
+                    {/* Another way: the render prop won't create a new component if it is already rendered. This way is better if we do have props we want to pass into our component*/}
+                    <Route exact path="/component2" render={() => <Component2 name="Pepper" />} />
                     <Route exact path="/component3" component={Component3} />
                     <Route exact path="/" component={Home} />
                 </Switch>
