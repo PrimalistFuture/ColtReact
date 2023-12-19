@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Router</title>
+</head>
+
+<body>
+    <h1>React Router</h1>
+
+    <ul>Goals
+        <li>Describe what client-side routing is and why it's useful</li>
+        <li>Compare client-side routing to server-side routing</li>
+        <li>Implement client-side routing with React Router</li>
+    </ul>
+
+    <h2>Server-Side Routing</h2>
+
+    <p>Traditional routing is server-side. Clicking a link causes browser to request a new page and replace the entire
+        DOM. The Server decides what HTML to return based on URL requested and the entire page refreshes. The
+        information from the old page is totally gone and no trace of it will be on the new page.</p>
+
+    <h2>Fake Client-Side Routing</h2>
+
+    <p>Client-side routing handles mapping between URL bar and the content a user sees via browser rather than via
+        server.</p>
+
+    <p>Client-side routing essentially fakes traditional server-side routing. All of your data exists within the page
+        already, but browser will only show what you want it to. When a link is clicked it won't take you to a new page,
+        but a it will refresh with the new content.</p>
+
+    <p>Issues: The browser doesn't really know that things have changed, and the forward and back buttons don't work. We
+        don't
+        get URLs that would let a user navigate directly do a page. And the user can't bookmark specific pages.</p>
+
+    <p>Sites that exclusively use client-side routing are called <b>single-page applications</b>. They use JavaScript to
+        manipulate the URL bar with a Web API called History</p>
+
+    <p>It works, but its just okay.</p>
+
+    <h2>React Router and real client-side routing</h2>
+
+    <p>There are many tools you can use to make client-side routing, and React Router is one such tool. It is not built
+        into React, or really even an offical add-on. But it is very popular.</p>
+
+    <p>To install, <b>npm install react-router-dom</b>. It must be imported at the top, <b>import {BrowserRouter} from
+            "react-router-dom";</b>. There are other types of routers you can look into, but this one is fine.</p>
+
+
+
+</body>
+
+</html>
