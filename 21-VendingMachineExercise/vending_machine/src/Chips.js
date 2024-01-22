@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Message from "./Message";
 class Chips extends Component {
     constructor(props) {
         super(props);
@@ -10,8 +11,10 @@ class Chips extends Component {
     render() {
         return (
             <div className="Chips">
-                <h1>I am a chip</h1>
-                <Link to="/">Go Back</Link>
+                <Message>
+                    <h1>I am a chip</h1>
+                    <Link to="/">Go Back</Link>
+                </Message>
             </div>
         )
     }

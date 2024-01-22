@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import Message from "./Message";
 class Podracer extends Component {
     constructor(props) {
         super(props);
@@ -11,8 +11,10 @@ class Podracer extends Component {
     render() {
         return (
             <div className="Podracer">
-                <h1>I am a podracer</h1>
-                <Link to="/">Go Back</Link>
+                <Message>
+                    <h1>I am a podracer</h1>
+                    <Link to="/">Go Back</Link>
+                </Message>
             </div>
         )
     }
