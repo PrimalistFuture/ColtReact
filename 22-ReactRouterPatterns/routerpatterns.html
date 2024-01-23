@@ -33,8 +33,12 @@
     <ul>Two main ways to redirect:
         <li>Using the Redirect component, which is generally used for stuff like "you shouldn't have gotten here, go
             here instead."</li>
-        <li></li>
+        <li>The other way is using .push on the <b>history</b> object which is part of the information all browsers
+            track. This is usually used when the user saved some information and now you want to move them along. Make
+            sure you are passing in the routeProps to the component that uses the history object, otherwise it won't
+            have access. Check out the demo2 for how to get around some these issues</li>
     </ul>
+
 
 
 
