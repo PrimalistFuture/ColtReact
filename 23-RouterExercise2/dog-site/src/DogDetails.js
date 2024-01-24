@@ -6,7 +6,7 @@ import './DogDetails.css';
 
 function DogDetails(props) {
     let params = useParams();
-
+    // console.log(params);
     function getDog(params) {
         let name = params.name;
         let currentDog = props.dogs.find(
@@ -15,6 +15,7 @@ function DogDetails(props) {
         return currentDog
     }
     let dog = getDog(params);
+    // let dog = props.dog;
 
     return (
         <div className="container">
@@ -30,7 +31,7 @@ function DogDetails(props) {
                         </div>
                         <ul className="list-group list-group-flush">
                             {dog.facts.map((fact, i) => (
-                                <li className="list-group-list-item" key={i}>{fact}
+                                <li className="list-group-item" key={i}>{fact}
                                 </li>
                             ))}
                         </ul>
