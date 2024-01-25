@@ -55,5 +55,5 @@ class App extends Component {
 
     {/* // including a 404
 // use the Switch part of react-router-dom to ensure only one Route Matches */}
-    <Route exact render={() => <h1>ERROR NOT FOUND</h1> >} />
+    <Route exact render={() => <h1>ERROR NOT FOUND</h1>} />
 </div>
