@@ -22,7 +22,22 @@
         second a
         function to change the state.</p>
 
+    <h2>useEffect Hook</h2>
 
+    <p>When we built class based components we used a bunch of lifecycle methods like componentDidMount,
+        componentDidUpdate and componentWillUnmount. Those are not available to use with hooks.</p>
+
+    <p>But we can achieve the same functionality with useEffect. Whatever code is in there, will be run after every
+        single render, including the very first.</p>
+
+    <p>Commonly used when getting info from a DB, API or saving something. In a class based component, this would be
+        accomplished with a callback function that would run after the state had been set.</p>
+
+    <p>If useEffect is changing a piece of state, it will trigger a re-render, which will trigger another re-render and
+        so on. Infinite loops very easily.</p>
+
+    <p>To get around this, you can pass in a second argument to useEffect as an array containing a piece of data in the
+        state that will trigger useEffect.</p>
 
 </body>
 
