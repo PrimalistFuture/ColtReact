@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import Slider from 'rc-slider';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+
 import 'rc-slider/assets/index.css';
 import './Navbar.css';
+
 
 class Navbar extends Component {
     render() {
@@ -25,7 +29,17 @@ class Navbar extends Component {
                         />
                     </div>
                 </div>
-
+                <div className="select-container">
+                    <Select>
+                        <MenuItem defaultValue='hex'>HEX - #ffffff</MenuItem>
+                        <MenuItem defaultValue='rgb'>
+                            RGB - rgb(255,255,255)
+                        </MenuItem>
+                        <MenuItem defaultValue='rgba'>
+                            RGBA - rgb(255,255,255, 1.0)
+                        </MenuItem>
+                    </Select>
+                </div>
             </header>
         );
     }
