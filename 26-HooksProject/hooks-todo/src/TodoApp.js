@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import useTodoState from "./hooks/useTodoState";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 import '@fontsource/roboto/300.css';
@@ -18,31 +19,7 @@ function TodoApp() {
         { id: uuidv4(), task: "Learn React", completed: false },
         { id: uuidv4(), task: "Shave", completed: true },
     ]
-
-    const [todos, setTodos] = useState(initialTodos);
-
-    const addTodo = newTodoText => {
-        setTodos([...todos, { id: uuidv4(), task: newTodoText, completed: false }])
-    };
-
-    const removeTodo = todoId => {
-        const updatedTodos = todos.filter(todo => todo.id !== todoId);
-        setTodos(updatedTodos);
-    }
-
-    const toggleTodo = todoId => {
-        const updatedTodos = todos.map(todo =>
-            todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-        );
-        setTodos(updatedTodos);
-    }
-
-    const editTodo = (todoId, newTask) => {
-        const updatedTodos = todos.map(todo =>
-            todo.id === todoId ? { ...todo, task: newTask } : todo
-        );
-        setTodos(updatedTodos);
-    }
+    const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(initialTodos);
 
     return (
         <Paper
