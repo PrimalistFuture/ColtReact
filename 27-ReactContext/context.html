@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Context</title>
+</head>
+
+<body>
+    <h1>React Context</h1>
+
+    <p>In a typical React app, data is passed top-down via props, but this is cumbersome for certain types of props that
+        are required by many components within an application. Context provides a way to share values between components
+        without having to explicitly pass a prop through every level of the tree.</p>
+
+    <p>Context is designed to share data that can be considered 'global' for a tree of React components, such as the
+        current authenticated user, them or preferred language.</p>
+
+    <p>Context can also be used (with some help from useReducer) to solve the issue we saw in the last section, in which
+        some of our hooks were passed through multiple components, in which they were not ever used, and finally used
+        way down the chain. Its an organizational issue. You are going to see that component recieve a prop and imagine
+        it is important for that component, when in fact it is just passing through.</p>
+
+    <p>There are some conflicting ideas about if context should be used to solve the above issue.</p>
+
+    <h2>Material UI</h2>
+
+    <p>So many of the videos in this section have to do with working with Material UI and very little to do with
+        Context. I skimmed over them.</p>
+
+    <h2>Context and Providers</h2>
+
+    <p>Every Context object comes with a Provider React component that allows consuming components to subscribe to
+        context changes. </p>
+
+    <p>So Context is </p>
+
+
+
+
+
+</body>
+
+</html>
